@@ -8,6 +8,7 @@ public class FloatingCameraController : MonoBehaviour
 
     public float RotateSpeed = 180f;
     public float MoveSpeed = 5f;
+    public float rotXRange = 75f;
     bool canMove;
 
     public float rotX, rotY;
@@ -36,9 +37,15 @@ public class FloatingCameraController : MonoBehaviour
 
         if (!canMove) return;
 
-        transform.Translate(Input.GetAxis("Horizontal") * MoveSpeed * Time.deltaTime, 0,  Input.GetAxis("Vertical") * MoveSpeed * Time.deltaTime);   
+        
+
+        transform.Translate(Input.GetAxis("Horizontal") * MoveSpeed * Time.deltaTime, 0,  Input.GetAxis("Vertical") * MoveSpeed * Time.deltaTime);
+        transform.position += new Vector3(0, Input.GetAxis("UPDOWN") * MoveSpeed * Time.deltaTime, 0);
         rotY += Input.GetAxis("Mouse X") * RotateSpeed * Time.deltaTime;
         rotX += -Input.GetAxis("Mouse Y") * RotateSpeed * Time.deltaTime;
+
+        rotX = Mathf.Clamp(rotX, -rotXRange, rotXRange);
+
         transform.eulerAngles = new Vector3(rotX, rotY, 0);
 
     }
