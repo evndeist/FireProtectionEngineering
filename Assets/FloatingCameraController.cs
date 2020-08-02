@@ -2,34 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FloatingCameraController : MonoBehaviour
+public class FloatingCameraController : ControllerBase
 {
 
 
     public float RotateSpeed = 180f;
     public float MoveSpeed = 5f;
     public float rotXRange = 75f;
-    bool canMove;
+    
 
     public float rotX, rotY;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        Resume();    
-    }
 
-    public void Pause() {
-
-        canMove = false;
-
-    }
-
-    public void Resume() {
-
-        canMove = true;
-
-    }
+  
 
     // Update is called once per frame
     void Update()
