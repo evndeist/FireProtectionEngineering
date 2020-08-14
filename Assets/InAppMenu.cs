@@ -29,7 +29,7 @@ public class InAppMenu : MonoBehaviour
     void Update()
     {
     
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetKeyDown(KeyCode.Q)) {
           
             if (paused) {
                 currentController.Resume();
