@@ -51,6 +51,8 @@ public class InAppMenu : MonoBehaviour
     }
 
 
+    bool flying = true;
+
     public void SetFlying() {
         if (currentController) currentController.Resume();
         groundController.gameObject.SetActive(false);
@@ -58,6 +60,7 @@ public class InAppMenu : MonoBehaviour
 
         currentController = flyingController;
         currentController.Pause();
+        flying = true;
     }
 
 
@@ -70,6 +73,13 @@ public class InAppMenu : MonoBehaviour
 
         currentController = groundController;
         currentController.Pause();
+        flying = false;
+    }
+
+
+    public void ToggleFlying() {
+        if (flying) SetGround();
+        else SetFlying();
     }
 
 

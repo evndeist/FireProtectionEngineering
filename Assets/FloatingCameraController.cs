@@ -9,7 +9,8 @@ public class FloatingCameraController : ControllerBase
     public float RotateSpeed = 180f;
     public float MoveSpeed = 5f;
     public float rotXRange = 75f;
-    
+   
+
 
     public float rotX, rotY;
 
@@ -23,9 +24,13 @@ public class FloatingCameraController : ControllerBase
         if (!canMove) return;
 
         
-
-        transform.Translate(Input.GetAxis("Horizontal") * MoveSpeed * Time.deltaTime, 0,  Input.GetAxis("Vertical") * MoveSpeed * Time.deltaTime);
-        transform.position += new Vector3(0, Input.GetAxis("UPDOWN") * MoveSpeed * Time.deltaTime, 0);
+        if (Input.GetKey(KeyCode.LeftShift)) {
+            transform.Translate(Input.GetAxis("Horizontal") * MoveSpeed * Time.deltaTime, 0, Input.GetAxis("Vertical") * MoveSpeed * sprintMultiplier * Time.deltaTime);
+            transform.position += new Vector3(0, Input.GetAxis("UPDOWN") * MoveSpeed * sprintMultiplier * Time.deltaTime, 0);
+        } else {
+            transform.Translate(Input.GetAxis("Horizontal") * MoveSpeed * Time.deltaTime, 0, Input.GetAxis("Vertical") * MoveSpeed * Time.deltaTime);
+            transform.position += new Vector3(0, Input.GetAxis("UPDOWN") * MoveSpeed * Time.deltaTime, 0);
+        }
         rotY += Input.GetAxis("Mouse X") * RotateSpeed * Time.deltaTime;
         rotX += -Input.GetAxis("Mouse Y") * RotateSpeed * Time.deltaTime;
 

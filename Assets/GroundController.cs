@@ -37,7 +37,11 @@ public class GroundController : ControllerBase {
         velocity = cam.transform.forward * Input.GetAxis("Vertical") +
                    cam.transform.right * Input.GetAxis("Horizontal");
         velocity.y = 0;
-        velocity = velocity * walkSpeed;
+        if (Input.GetKey(KeyCode.LeftShift)) {
+            velocity = velocity * walkSpeed * sprintMultiplier;
+        } else {
+            velocity = velocity * walkSpeed;
+        }
         velocity.y = rigidBody.velocity.y;
 
 
