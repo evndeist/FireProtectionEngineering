@@ -25,7 +25,7 @@ public class FloatingCameraController : ControllerBase
 
         
         if (Input.GetKey(KeyCode.LeftShift)) {
-            transform.Translate(Input.GetAxis("Horizontal") * MoveSpeed * Time.deltaTime, 0, Input.GetAxis("Vertical") * MoveSpeed * sprintMultiplier * Time.deltaTime);
+            transform.Translate(Input.GetAxis("Horizontal") * MoveSpeed * Time.deltaTime * sprintMultiplier, 0, Input.GetAxis("Vertical") * MoveSpeed * sprintMultiplier * Time.deltaTime);
             transform.position += new Vector3(0, Input.GetAxis("UPDOWN") * MoveSpeed * sprintMultiplier * Time.deltaTime, 0);
         } else {
             transform.Translate(Input.GetAxis("Horizontal") * MoveSpeed * Time.deltaTime, 0, Input.GetAxis("Vertical") * MoveSpeed * Time.deltaTime);
