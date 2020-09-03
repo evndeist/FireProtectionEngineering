@@ -5,6 +5,8 @@ using UnityEngine;
 public class FloatingCameraController : ControllerBase
 {
 
+    public float maxDistanceFromCenter;
+    public Transform center;
 
     public float RotateSpeed = 180f;
     public float MoveSpeed = 5f;
@@ -15,9 +17,14 @@ public class FloatingCameraController : ControllerBase
     public float rotX, rotY;
 
 
-  
+    private void Awake() {
+        rotX = transform.eulerAngles.x;
+        rotY = transform.eulerAngles.y;
+    }
 
     // Update is called once per frame
+    Vector3 newPosition;
+
     void Update()
     {
 
@@ -25,12 +32,26 @@ public class FloatingCameraController : ControllerBase
 
         
         if (Input.GetKey(KeyCode.LeftShift)) {
-            transform.Translate(Input.GetAxis("Horizontal") * MoveSpeed * Time.deltaTime * sprintMultiplier, 0, Input.GetAxis("Vertical") * MoveSpeed * sprintMultiplier * Time.deltaTime);
-            transform.position += new Vector3(0, Input.GetAxis("UPDOWN") * MoveSpeed * sprintMultiplier * Time.deltaTime, 0);
+            newPosition = ((Input.GetAxis("Horizontal") * MoveSpeed * Time.deltaTime * sprintMultiplier) * transform.right)
+                + transform.forward * Input.GetAxis("Vertical") * MoveSpeed * sprintMultiplier * Time.deltaTime;
+            newPosition += new Vector3(0, Input.GetAxis("UPDOWN") * MoveSpeed * sprintMultiplier * Time.deltaTime, 0);
         } else {
-            transform.Translate(Input.GetAxis("Horizontal") * MoveSpeed * Time.deltaTime, 0, Input.GetAxis("Vertical") * MoveSpeed * Time.deltaTime);
-            transform.position += new Vector3(0, Input.GetAxis("UPDOWN") * MoveSpeed * Time.deltaTime, 0);
+            newPosition = ((Input.GetAxis("Horizontal") * MoveSpeed * Time.deltaTime) * transform.right)
+                + transform.forward * Input.GetAxis("Vertical") * MoveSpeed * Time.deltaTime;
+            newPosition += new Vector3(0, Input.GetAxis("UPDOWN") * MoveSpeed * Time.deltaTime, 0);
         }
+
+
+        newPosition += transform.position;
+
+        if (Vector3.Distance(newPosition, center.transform.position) > maxDistanceFromCenter) {
+
+        } else {
+            transform.position = newPosition;
+        }
+
+
+
         rotY += Input.GetAxis("Mouse X") * RotateSpeed * Time.deltaTime;
         rotX += -Input.GetAxis("Mouse Y") * RotateSpeed * Time.deltaTime;
 
