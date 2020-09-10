@@ -5,8 +5,9 @@ using UnityEngine;
 public class ValveController : MonoBehaviour {
 
     public bool isin = false;
-    public float rotateSpeed;
+    public Vector3 rotation;
     public float moveSpeed;
+    public Transform movePipe;
 
     public Transform inPosition, outPosition;
 
@@ -33,9 +34,9 @@ public class ValveController : MonoBehaviour {
 
         moving = true;
 
-        while (transform.position != t.position) {
-            transform.position = Vector3.MoveTowards(transform.position, t.position, moveSpeed * Time.deltaTime);
-            transform.Rotate(0, rotateSpeed * direction * Time.deltaTime, 0);
+        while (movePipe.position != t.position) {
+            movePipe.position = Vector3.MoveTowards(movePipe.position, t.position, moveSpeed * Time.deltaTime);
+            transform.transform.Rotate(rotation * Time.deltaTime * direction);
             yield return null;
         }
 
