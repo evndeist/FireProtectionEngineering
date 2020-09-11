@@ -12,7 +12,7 @@ public class ValveInteractionPoint : InteractionPoint {
             return "";
         }
 
-        if (!controller.open) {
+        if (controller.open) {
             return "Close Valve";
         } else {
             return "Open Valve";

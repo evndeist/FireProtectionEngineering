@@ -8,20 +8,25 @@ public class GaugeController : MonoBehaviour
 
     public TextMeshPro text;
     public Transform dial;
-    public float ymin = 60f, yMax = 300f;
-    public float maxAmount = 8;
+    public float ymin = 0f, yMax = 360f;
+    public float maxAmount = 120;
     public float angleMoveSpeed = 90f;
 
+    float onePerSecondSpeed = 1f;
+    
+    public void Awake() {
+        onePerSecondSpeed = (yMax - ymin) / (maxAmount);
+    }
 
 
     public void SetAmount(float f) {
 
         StopAllCoroutines();
-        StartCoroutine(GoToPoint(f));
+        StartCoroutine(GoToPoint(f, angleMoveSpeed));
 
     }
 
-    IEnumerator GoToPoint(float f) {
+    IEnumerator GoToPoint(float f, float speed) {
 
         float degrees = f / maxAmount;
         float targety = ymin + (yMax - ymin) * degrees;
@@ -34,7 +39,7 @@ public class GaugeController : MonoBehaviour
             int value = (int)(((dial.transform.localEulerAngles.y - ymin) / ((yMax - ymin))) * maxAmount);
 
             text.text = value.ToString();
-            dial.transform.localEulerAngles = new Vector3(0,Mathf.MoveTowards(dial.transform.localEulerAngles.y, targety, angleMoveSpeed * Time.deltaTime),0);
+            dial.transform.localEulerAngles = new Vector3(0,Mathf.MoveTowards(dial.transform.localEulerAngles.y, targety, speed * Time.deltaTime),0);
            // print(dial.transform.localEulerAngles.ToString());
             yield return null;
         }
@@ -58,7 +63,7 @@ public class GaugeController : MonoBehaviour
     public IEnumerator GoToSpotThenZeroOut(float f) {
 
         
-        yield return GoToPoint(0);
+        yield return GoToPoint(0,angleMoveSpeed);
     }
 
 
@@ -73,7 +78,7 @@ public class GaugeController : MonoBehaviour
         while (g.dial.transform.localEulerAngles.y > targety) {
             yield return null;
         }
-        yield return GoToPoint(0);
+        yield return GoToPoint(0,onePerSecondSpeed);
     }
 
 

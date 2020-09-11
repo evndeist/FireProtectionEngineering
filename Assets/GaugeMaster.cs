@@ -48,8 +48,17 @@ public class GaugeMaster : MonoBehaviour
             G2.SetAmount(80);
             G3.SetAmount(100);
             G4.SetAmount(80);
+        } else if (V1.open && V2.open && !V3.open && V4.open) {
+            G1.SetAmount(70);
+            G2.SetAmount(70);
+            G3.SetAmount(100);
+            G4.SetAmount(80);
+        } else if (!V1.open && V2.open && V3.open && V4.open) {
+            G1.SetAmount(100);
+            G2.SetAmount(80);
+            G3.SetAmount(70);
+            G4.SetAmount(70);
         } else if (V1.open && V2.open && V3.open && V4.open) {
-            
             G1.SetAmount(40);
             G2.SetAmount(40);
             G3.SetAmount(40);
@@ -67,6 +76,40 @@ public class GaugeMaster : MonoBehaviour
         } else if (V1.open && !V2.open && V3.open && !V4.open) {
             G1.GoToSpotAndZero(100);
             G2.WaitDrop(G1, 80);
+            G3.GoToSpotAndZero(100);
+            G4.WaitDrop(G3, 80);
+        } else if (!V1.open && !V2.open && V3.open && V4.open) {
+            G1.SetAmount(100);
+            G2.SetAmount(80);
+            G3.SetAmount(70);
+            G4.SetAmount(70);
+        } else if (!V1.open && V2.open && V3.open && !V4.open) {
+
+            G1.SetAmount(100);
+            G2.SetAmount(80);
+            G3.GoToSpotAndZero(100);
+            G4.WaitDrop(G3, 80);
+        } else if (V1.open && !V2.open && !V3.open && V4.open) {
+
+            G1.GoToSpotAndZero(100);
+            G2.WaitDrop(G1, 80);
+            G3.SetAmount(100);
+            G4.SetAmount(80);
+        } else if (V1.open && !V2.open && V3.open && V4.open) {
+
+            G1.GoToSpotAndZero(100);
+            G2.WaitDrop(G1, 80);
+            G3.SetAmount(70);
+            G4.SetAmount(70);
+        } else if (V1.open && V2.open && !V3.open && !V4.open) {
+
+            G1.SetAmount(70);
+            G2.SetAmount(70);
+            G3.SetAmount(100);
+            G4.SetAmount(80);
+        } else if (V1.open && V2.open && V3.open && !V4.open) {
+            G1.SetAmount(70);
+            G2.SetAmount(70);
             G3.GoToSpotAndZero(100);
             G4.WaitDrop(G3, 80);
         }

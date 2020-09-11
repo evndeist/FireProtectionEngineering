@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ValveController : MonoBehaviour {
@@ -11,6 +12,7 @@ public class ValveController : MonoBehaviour {
     public Transform inPosition, outPosition;
     public bool moving = false;
     bool initYet = false;
+    public TextMeshPro text;
 
     public void Awake() {
 
@@ -27,9 +29,11 @@ public class ValveController : MonoBehaviour {
         
         moving = true;
         if (!open) {
+            text.text = "Open";
             open = !open;
             StartCoroutine(MoveToSpot(outPosition, -1));
         } else {
+            text.text = "Closed";
             open = !open;
             StartCoroutine(MoveToSpot(inPosition, 1));
         }

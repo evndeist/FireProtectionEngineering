@@ -626,7 +626,7 @@ MonoBehaviour:
   ymin: 0
   yMax: 360
   maxAmount: 120
-  angleMoveSpeed: 90
+  angleMoveSpeed: 45
 --- !u!1 &4675413675401079738
 GameObject:
   m_ObjectHideFlags: 0
