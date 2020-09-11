@@ -4,33 +4,45 @@ using UnityEngine;
 
 public class ValveController : MonoBehaviour {
 
-    public bool isin = false;
+    public bool open = false;
     public Vector3 rotation;
     public float moveSpeed;
     public Transform movePipe;
-
     public Transform inPosition, outPosition;
-
     public bool moving = false;
+    bool initYet = false;
+
+    public void Awake() {
+
+        open = !open;
+        Toggle();
+        initYet = true;
+    }
 
 
 
     public void Toggle() {
+       
         if (moving) return;
-
+        
         moving = true;
-        if (isin) {
+        if (!open) {
+            open = !open;
             StartCoroutine(MoveToSpot(outPosition, -1));
         } else {
+            open = !open;
             StartCoroutine(MoveToSpot(inPosition, 1));
         }
+
+        if (initYet)GaugeMaster.instance.UpdateGauges();
+
 
     }
 
 
     public IEnumerator MoveToSpot(Transform t, int direction) {
 
-        print("start");
+      
 
         moving = true;
 
@@ -41,8 +53,11 @@ public class ValveController : MonoBehaviour {
         }
 
         moving = false;
-        isin = !isin;
-
+        
+        
 
     }
+
+    
+
 }

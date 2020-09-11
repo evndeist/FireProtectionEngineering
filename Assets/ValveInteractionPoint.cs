@@ -12,10 +12,10 @@ public class ValveInteractionPoint : InteractionPoint {
             return "";
         }
 
-        if (controller.isin) {
-            return "Loosen Valve";
+        if (!controller.open) {
+            return "Close Valve";
         } else {
-            return "Tighten Valve";
+            return "Open Valve";
         }
 
 
