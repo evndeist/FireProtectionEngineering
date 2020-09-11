@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GaugeController : MonoBehaviour
 {
 
+    public TextMeshPro text;
     public Transform dial;
     public float ymin = 60f, yMax = 300f;
     public float maxAmount = 8;
@@ -23,18 +25,22 @@ public class GaugeController : MonoBehaviour
 
         float degrees = f / maxAmount;
         float targety = ymin + (yMax - ymin) * degrees;
-        
-        
+
+        text.text = f.ToString();
 
         while (dial.transform.localEulerAngles.y != targety) {
 
+
+            int value = (int)(((dial.transform.localEulerAngles.y - ymin) / ((yMax - ymin))) * maxAmount);
+
+            text.text = value.ToString();
             dial.transform.localEulerAngles = new Vector3(0,Mathf.MoveTowards(dial.transform.localEulerAngles.y, targety, angleMoveSpeed * Time.deltaTime),0);
            // print(dial.transform.localEulerAngles.ToString());
             yield return null;
         }
 
         dial.transform.localEulerAngles = new Vector3(0, targety, 0);
-
+        text.text = f.ToString();
 
 
 
