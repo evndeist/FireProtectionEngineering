@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ControllerBase : MonoBehaviour
 {
+    public static float SENSITIVITY = 1;
     public float sprintMultiplier = 2f;
     protected bool canMove;
     // Start is called before the first frame update

@@ -52,8 +52,8 @@ public class FloatingCameraController : ControllerBase
 
 
 
-        rotY += Input.GetAxis("Mouse X") * RotateSpeed * Time.deltaTime;
-        rotX += -Input.GetAxis("Mouse Y") * RotateSpeed * Time.deltaTime;
+        rotY += Input.GetAxis("Mouse X") * RotateSpeed * SENSITIVITY * Time.deltaTime;
+        rotX += -Input.GetAxis("Mouse Y") * RotateSpeed * SENSITIVITY * Time.deltaTime;
 
         rotX = Mathf.Clamp(rotX, -rotXRange, rotXRange);
 

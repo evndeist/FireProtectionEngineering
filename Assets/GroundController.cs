@@ -29,8 +29,8 @@ public class GroundController : ControllerBase {
         mouseXInput = Input.GetAxis("Mouse X");
         mouseYInput = Input.GetAxis("Mouse Y");
 
-        transform.Rotate(0, mouseXInput * Time.deltaTime * mouseXSpeed, 0);
-        cam.transform.Rotate(mouseYInput * Time.deltaTime * mouseYSpeed, 0, 0);
+        transform.Rotate(0, mouseXInput * Time.deltaTime * mouseXSpeed * SENSITIVITY, 0);
+        cam.transform.Rotate(mouseYInput * Time.deltaTime * mouseYSpeed * SENSITIVITY, 0, 0);
 
         
 
