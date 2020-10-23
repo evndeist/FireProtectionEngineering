@@ -63,7 +63,7 @@ public class GaugeController : MonoBehaviour
     public IEnumerator GoToSpotThenZeroOut(float f) {
 
         
-        yield return GoToPoint(0,angleMoveSpeed);
+        yield return GoToPoint(0,onePerSecondSpeed);
     }
 
 
