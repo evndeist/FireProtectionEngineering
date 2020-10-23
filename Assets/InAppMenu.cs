@@ -6,7 +6,7 @@ public class InAppMenu : MonoBehaviour
 {
 
 
-    public bool paused = false;
+    public static bool paused = false;
     public ControllerBase flyingController, groundController, currentController;
 
     

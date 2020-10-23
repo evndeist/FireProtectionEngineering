@@ -2693,7 +2693,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &336574427
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4709,6 +4709,7 @@ GameObject:
   - component: {fileID: 500070625}
   - component: {fileID: 500070624}
   - component: {fileID: 500070627}
+  - component: {fileID: 500070628}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -4799,6 +4800,25 @@ MonoBehaviour:
   interactDistance: 20
   prompt: {fileID: 1724292148}
   appMenu: {fileID: 371155543}
+--- !u!114 &500070628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500070623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43f8ec47394ee9f419c48435ffcfa65a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clampInDegrees: {x: 360, y: 180}
+  lockCursor: 0
+  sensitivity: {x: 2, y: 2}
+  smoothing: {x: 3, y: 3}
+  targetDirection: {x: 0, y: 0}
+  targetCharacterDirection: {x: 0, y: 0}
+  characterBody: {fileID: 0}
 --- !u!1 &500513341
 GameObject:
   m_ObjectHideFlags: 0
@@ -8338,6 +8358,7 @@ GameObject:
   - component: {fileID: 963194226}
   - component: {fileID: 963194230}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194231}
   m_Layer: 0
   m_Name: FlyingController
   m_TagString: Untagged
@@ -8443,11 +8464,30 @@ MonoBehaviour:
   sprintMultiplier: 3
   maxDistanceFromCenter: 150
   center: {fileID: 1705496895}
-  RotateSpeed: 180
+  RotateSpeed: 0
   MoveSpeed: 7
   rotXRange: 90
   rotX: 0
   rotY: 0
+--- !u!114 &963194231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43f8ec47394ee9f419c48435ffcfa65a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clampInDegrees: {x: 360, y: 180}
+  lockCursor: 0
+  sensitivity: {x: 1, y: 1}
+  smoothing: {x: 3, y: 3}
+  targetDirection: {x: 0, y: 0}
+  targetCharacterDirection: {x: 0, y: 0}
+  characterBody: {fileID: 0}
 --- !u!1 &973748865
 GameObject:
   m_ObjectHideFlags: 0

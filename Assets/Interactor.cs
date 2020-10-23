@@ -20,7 +20,7 @@ public class Interactor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (appMenu.paused) {
+        if (InAppMenu.paused) {
             if (prompt.gameObject.activeInHierarchy) prompt.gameObject.SetActive(false);
         } else {
 

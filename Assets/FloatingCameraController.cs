@@ -52,12 +52,12 @@ public class FloatingCameraController : ControllerBase
 
 
 
-        rotY += Input.GetAxis("Mouse X") * RotateSpeed * SENSITIVITY * Time.deltaTime;
-        rotX += -Input.GetAxis("Mouse Y") * RotateSpeed * SENSITIVITY * Time.deltaTime;
+        //rotY += Input.GetAxis("Mouse X") * RotateSpeed * SENSITIVITY * Time.deltaTime;
+        //rotX += -Input.GetAxis("Mouse Y") * RotateSpeed * SENSITIVITY * Time.deltaTime;
 
-        rotX = Mathf.Clamp(rotX, -rotXRange, rotXRange);
+      //  rotX = Mathf.Clamp(rotX, -rotXRange, rotXRange);
 
-        transform.eulerAngles = new Vector3(rotX, rotY, 0);
+      //  transform.eulerAngles = new Vector3(rotX, rotY, 0);
 
     }
 }
