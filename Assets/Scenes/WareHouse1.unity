@@ -3541,7 +3541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1358fd0f2c811bb42b54f28e20b84764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paused: 0
   flyingController: {fileID: 963194230}
   groundController: {fileID: 336574429}
   currentController: {fileID: 0}
@@ -4812,6 +4811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f8ec47394ee9f419c48435ffcfa65a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprintMultiplier: 2
   clampInDegrees: {x: 360, y: 180}
   lockCursor: 0
   sensitivity: {x: 2, y: 2}
@@ -8481,6 +8481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f8ec47394ee9f419c48435ffcfa65a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprintMultiplier: 2
   clampInDegrees: {x: 360, y: 180}
   lockCursor: 0
   sensitivity: {x: 1, y: 1}
